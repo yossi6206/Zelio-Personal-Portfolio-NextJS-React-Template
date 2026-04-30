@@ -1,0 +1,54 @@
+/* RTL Global Overrides */
+:root {
+  --heebo: 'Polin', sans-serif;
+}
+
+html[dir="rtl"] body {
+  font-family: 'Polin', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Flip Bootstrap margin/padding start/end for RTL */
+html[dir="rtl"] .ms-auto { margin-right: auto !important; margin-left: unset !important; }
+html[dir="rtl"] .me-auto { margin-left: auto !important; margin-right: unset !important; }
+html[dir="rtl"] .ps-3 { padding-right: 1rem !important; padding-left: unset !important; }
+html[dir="rtl"] .pe-5 { padding-left: 3rem !important; padding-right: unset !important; }
+html[dir="rtl"] .ms-2 { margin-right: 0.5rem !important; margin-left: unset !important; }
+html[dir="rtl"] .ms-3 { margin-right: 1rem !important; margin-left: unset !important; }
+html[dir="rtl"] .me-2 { margin-left: 0.5rem !important; margin-right: unset !important; }
+
+/* Navbar */
+html[dir="rtl"] .navbar-brand { margin-right: unset; margin-left: auto; }
+html[dir="rtl"] .navbar-nav { padding-right: 0; }
+
+/* Flip icons that are directional */
+html[dir="rtl"] .ri-arrow-right-line::before { content: "\ea60"; }
+html[dir="rtl"] .ri-arrow-left-line::before { content: "\ea64"; }
+
+/* Scroll text direction */
+html[dir="rtl"] .scroll-move-right { direction: ltr; }
+
+/* Stroke text */
+html[dir="rtl"] .stroke { direction: ltr; }
+
+/* OffCanvas - flip from right side to left side */
+html[dir="rtl"] .offCanvas__info { right: unset; left: -310px; }
+html[dir="rtl"] .offCanvas__info.active { right: unset; left: 0; }
+
+/* Mobile menu */
+html[dir="rtl"] .mobile-header-active { right: unset; left: -310px; }
+html[dir="rtl"] .mobile-header-active.sidebar-visible { right: unset; left: 0; }
+
+/* Text alignment overrides */
+html[dir="rtl"] .text-start { text-align: right !important; }
+html[dir="rtl"] .text-end { text-align: left !important; }
+
+/* Form inputs */
+html[dir="rtl"] input, html[dir="rtl"] textarea {
+  text-align: right;
+}
+
+/* Pagination arrows */
+html[dir="rtl"] .pagination .ri-arrow-right-line::before { content: "\ea60"; }
+html[dir="rtl"] .pagination .ri-arrow-left-line::before { content: "\ea64"; }
