@@ -27,7 +27,7 @@ export default function Home1() {
 
 					{/* עמודת הטקסט — שמאל */}
 					<div className="col-lg-6 col-12 order-lg-2 d-flex flex-column justify-content-center" style={{zIndex: 2, paddingTop: "80px"}}>
-						<span className="text-dark">👋 שלום, אני וויליאם</span>
+						<span className="text-dark">👋 שלום, אני יוסי כהן</span>
 						<h1 className="ds-2 mb-3">יוצר <span className="text-primary-1">חוויות דיגיטליות</span> אינטואיטיביות</h1>
 						<p className="text-300 mb-6">אני מסייע לאנשים ומותגים להשיג את מטרותיהם על ידי יצירה ופיתוח של מוצרים דיגיטליים ממוקדי משתמש וחוויות אינטראקטיביות.</p>
 						<div className="d-flex flex-wrap gap-2 mb-6">
