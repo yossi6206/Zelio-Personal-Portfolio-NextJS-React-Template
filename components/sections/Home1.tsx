@@ -19,7 +19,7 @@ export default function Home1() {
 					</div>
 						<img
 							className="filter-gray position-absolute bottom-0 start-50 translate-middle-x"
-							src="/assets/imgs/hero/hero-1/man.png"
+							src="/assets/imgs/hero/hero-1/man.webp"
 							alt="man"
 							style={{height: "85%", objectFit: "contain", objectPosition: "bottom", zIndex: 1}}
 						/>

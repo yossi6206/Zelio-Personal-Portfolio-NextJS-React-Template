@@ -12,22 +12,22 @@ export default function Footer1() {
                                 <span className="fs-4 ms-2 text-white-keep">william.design</span>
                             </Link>
                             <div className="navigation d-none d-md-flex align-items-center justify-content-center flex-wrap gap-4 my-4">
-                                <Link href="/" className="fs-5">
+                                <Link href="/" className="fs-5 text-white-keep">
                                     בית
                                 </Link>
-                                <Link href="/services" className="fs-5">
+                                <Link href="/services" className="fs-5 text-white-keep">
                                     שירותים
                                 </Link>
-                                <Link href="/work" className="fs-5">
+                                <Link href="/work" className="fs-5 text-white-keep">
                                     תיק עבודות
                                 </Link>
-                                <Link href="/pricing" className="fs-5">
+                                <Link href="/pricing" className="fs-5 text-white-keep">
                                     מחירים
                                 </Link>
-                                <Link href="/blog-list" className="fs-5">
+                                <Link href="/blog-list" className="fs-5 text-white-keep">
                                     בלוג
                                 </Link>
-                                <Link href="/#contact" className="fs-5">
+                                <Link href="/#contact" className="fs-5 text-white-keep">
                                     צור קשר
                                 </Link>
                             </div>
