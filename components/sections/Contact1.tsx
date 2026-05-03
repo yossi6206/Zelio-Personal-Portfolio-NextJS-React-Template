@@ -1,10 +1,44 @@
+"use client"
 
 import Link from "next/link"
+import { useState, FormEvent } from "react"
 
 export default function Contact1() {
+	const [formData, setFormData] = useState({
+		name: "",
+		email: "",
+		phone: "",
+		subject: "",
+		message: "",
+	})
+	const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+		setFormData({ ...formData, [e.target.name]: e.target.value })
+	}
+
+	const handleSubmit = async (e: FormEvent) => {
+		e.preventDefault()
+		setStatus("loading")
+		try {
+			const res = await fetch("/api/contact", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(formData),
+			})
+			if (res.ok) {
+				setStatus("success")
+				setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
+			} else {
+				setStatus("error")
+			}
+		} catch {
+			setStatus("error")
+		}
+	}
+
 	return (
 		<>
-
 			<section id="contact" className="section-contact-1 bg-900 position-relative pt-150 pb-lg-250 pb-150 overflow-hidden">
 				<div className="container position-relative z-1">
 					<h3 className="ds-3 mt-3 mb-3 text-primary-1">צור קשר</h3>
@@ -60,32 +94,42 @@ export default function Contact1() {
 							<div className="position-relative">
 								<div className="position-relative z-2">
 									<h3>השאר הודעה</h3>
-									<form action="#">
+									<form onSubmit={handleSubmit}>
 										<div className="row mt-3">
 											<div className="col-md-6 ">
 												<label className="mb-1 mt-3 text-dark" htmlFor="name">Your name <span className="text-primary-1">*</span></label>
-												<input type="text" className="form-control border rounded-3" id="name" name="name" placeholder="ישראל ישראלי" aria-label="username" />
+												<input type="text" className="form-control border rounded-3" id="name" name="name" placeholder="ישראל ישראלי" aria-label="username" value={formData.name} onChange={handleChange} required />
 											</div>
 											<div className="col-md-6">
 												<label className="mb-1 mt-3 text-dark" htmlFor="email">מייל address <span className="text-primary-1">*</span></label>
-												<input type="text" className="form-control border rounded-3" id="email" name="email" placeholder="contact@example.com" aria-label="email" />
+												<input type="email" className="form-control border rounded-3" id="email" name="email" placeholder="contact@example.com" aria-label="email" value={formData.email} onChange={handleChange} required />
 											</div>
 											<div className="col-md-6">
 												<label className="mb-1 mt-3 text-dark" htmlFor="phone">Your phone <span className="text-primary-1">*</span></label>
-												<input type="text" className="form-control border rounded-3" id="phone" name="phone" placeholder="+972 50 123 4567" aria-label="phone" />
+												<input type="text" className="form-control border rounded-3" id="phone" name="phone" placeholder="+972 50 123 4567" aria-label="phone" value={formData.phone} onChange={handleChange} />
 											</div>
 											<div className="col-md-6">
 												<label className="mb-1 mt-3 text-dark" htmlFor="subject">Subject <span className="text-primary-1">*</span></label>
-												<input type="text" className="form-control border rounded-3" id="subject" name="subject" placeholder="אני רוצה ליצור קשר בנושא..." aria-label="subject" />
+												<input type="text" className="form-control border rounded-3" id="subject" name="subject" placeholder="אני רוצה ליצור קשר בנושא..." aria-label="subject" value={formData.subject} onChange={handleChange} />
 											</div>
 											<div className="col-12">
 												<label className="mb-1 mt-3 text-dark" htmlFor="message">Message <span className="text-primary-1">*</span></label>
-												<textarea className="form-control border rounded-3 pb-10" id="message" name="message" placeholder="הודעתך כאן..." aria-label="With textarea" />
+												<textarea className="form-control border rounded-3 pb-10" id="message" name="message" placeholder="הודעתך כאן..." aria-label="With textarea" value={formData.message} onChange={handleChange} required />
 											</div>
 											<div className="col-12">
-												<button type="submit" className="btn btn-gradient mt-3">
-													שלח הודעה
-													<i className="ri-arrow-right-up-line" />
+												{status === "success" && (
+													<div className="alert alert-success mt-3" role="alert">
+														ההודעה נשלחה בהצלחה! נחזור אליך בהקדם.
+													</div>
+												)}
+												{status === "error" && (
+													<div className="alert alert-danger mt-3" role="alert">
+														אירעה שגיאה בשליחה. אנא נסה שוב.
+													</div>
+												)}
+												<button type="submit" className="btn btn-gradient mt-3" disabled={status === "loading"}>
+													{status === "loading" ? "שולח..." : "שלח הודעה"}
+													{status !== "loading" && <i className="ri-arrow-right-up-line" />}
 												</button>
 											</div>
 										</div>
@@ -102,7 +146,6 @@ export default function Contact1() {
 					</div>
 				</div>
 			</section>
-
 		</>
 	)
 }
