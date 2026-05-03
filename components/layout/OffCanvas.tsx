@@ -20,11 +20,11 @@ export default function OffCanvas({ isOffCanvas, handleOffCanvas }: any) {
 						</div>
 						<div className="mb-3">
 							<span className="text-400 fs-5">מייל</span>
-							<p className="mb-0">contact@william.design</p>
+							<p className="mb-0">info@allintech.co.il</p>
 						</div>
 						<div className="mb-3">
 							<span className="text-400 fs-5">סקייפ</span>
-							<p className="mb-0">WilliamDesignUX</p>
+							<p className="mb-0">Allintech</p>
 						</div>
 						<div className="mb-3">
 							<span className="text-400 fs-5">כתובת</span>

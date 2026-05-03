@@ -12,6 +12,7 @@ export default function Contact1() {
 		message: "",
 	})
 	const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+	const [errorMsg, setErrorMsg] = useState("")
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -30,6 +31,8 @@ export default function Contact1() {
 				setStatus("success")
 				setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
 			} else {
+				const data = await res.json()
+				setErrorMsg(data.error || "שגיאה לא ידועה")
 				setStatus("error")
 			}
 		} catch {
@@ -55,9 +58,9 @@ export default function Contact1() {
 								</div>
 								<div className="ps-3">
 									<span className="text-400 fs-5">מספר טלפון</span>
-									<h6 className="mb-0">+1-234-567-8901</h6>
+									<h6 className="mb-0">054-541-6206</h6>
 								</div>
-								<Link href="/tel:+1-234-567-8901" className="position-absolute top-0 start-0 w-100 h-100" />
+								<Link href="tel:0545416206" className="position-absolute top-0 start-0 w-100 h-100" />
 							</div>
 							<div className="d-flex align-items-center mb-4 position-relative d-inline-flex">
 								<div className="bg-white icon-flip position-relative icon-shape icon-xxl border-linear-2 border-2 rounded-4">
@@ -65,19 +68,9 @@ export default function Contact1() {
 								</div>
 								<div className="ps-3">
 									<span className="text-400 fs-5">מייל</span>
-									<h6 className="mb-0">contact@william.design</h6>
+									<h6 className="mb-0">info@allintech.co.il</h6>
 								</div>
-								<Link href="/mailto:someone@example.com" className="position-absolute top-0 start-0 w-100 h-100" />
-							</div>
-							<div className="d-flex align-items-center mb-4 position-relative d-inline-flex">
-								<div className="bg-white icon-flip position-relative icon-shape icon-xxl border-linear-2 border-2 rounded-4">
-									<i className="ri-skype-fill text-primary-1 fs-26" />
-								</div>
-								<div className="ps-3">
-									<span className="text-400 fs-5">סקייפ</span>
-									<h6 className="mb-0">WilliamDesignUX</h6>
-								</div>
-								<Link href="/skype:SKYPENAME?add" className="position-absolute top-0 start-0 w-100 h-100" />
+								<Link href="mailto:info@allintech.co.il" className="position-absolute top-0 start-0 w-100 h-100" />
 							</div>
 							<div className="d-flex align-items-center mb-4 position-relative d-inline-flex">
 								<div className="bg-white icon-flip position-relative icon-shape icon-xxl border-linear-2 border-2 rounded-4">
@@ -85,9 +78,9 @@ export default function Contact1() {
 								</div>
 								<div className="ps-3">
 									<span className="text-400 fs-5">כתובת</span>
-									<h6 className="mb-0">0811 Erdman Prairie, Joaville CA</h6>
+									<h6 className="mb-0">רש"י 51, ירושלים</h6>
 								</div>
-								<Link href="/https://maps.google.com/maps?q=1st+avenue,New+York" className="position-absolute top-0 start-0 w-100 h-100" />
+								<Link href="https://maps.google.com/maps?q=רש״י+51+ירושלים" className="position-absolute top-0 start-0 w-100 h-100" />
 							</div>
 						</div>
 						<div className="col-lg-7 offset-lg-1 ps-lg-0 pt-5 pt-lg-0">
@@ -106,7 +99,7 @@ export default function Contact1() {
 											</div>
 											<div className="col-md-6">
 												<label className="mb-1 mt-3 text-dark" htmlFor="phone">Your phone <span className="text-primary-1">*</span></label>
-												<input type="text" className="form-control border rounded-3" id="phone" name="phone" placeholder="+972 50 123 4567" aria-label="phone" value={formData.phone} onChange={handleChange} />
+												<input type="text" className="form-control border rounded-3" id="phone" name="phone" placeholder="054-541-6206" aria-label="phone" value={formData.phone} onChange={handleChange} />
 											</div>
 											<div className="col-md-6">
 												<label className="mb-1 mt-3 text-dark" htmlFor="subject">Subject <span className="text-primary-1">*</span></label>
@@ -124,7 +117,7 @@ export default function Contact1() {
 												)}
 												{status === "error" && (
 													<div className="alert alert-danger mt-3" role="alert">
-														אירעה שגיאה בשליחה. אנא נסה שוב.
+														שגיאה: {errorMsg}
 													</div>
 												)}
 												<button type="submit" className="btn btn-gradient mt-3" disabled={status === "loading"}>
@@ -142,7 +135,7 @@ export default function Contact1() {
 				</div>
 				<div className="scroll-move-right position-absolute bottom-0 start-50 translate-middle-x bg-900 overflow-hidden">
 					<div className="wow img-custom-anim-top">
-						<h3 className="stroke fs-280 text-lowercase text-900 mb-0 lh-1">william.design</h3>
+						<h3 className="stroke fs-280 text-lowercase text-900 mb-0 lh-1">allintech</h3>
 					</div>
 				</div>
 			</section>
